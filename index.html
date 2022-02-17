@@ -38,40 +38,46 @@
 
           <div class="text-center">
             <label class="fw-bold" for="number">Income: </label>
-            <input class="bg-secondary bg-opacity-25 border-0 p-2 ms-3" type="email" name="" id="" />
+            <input class="bg-secondary bg-opacity-25 border-0 p-2 ms-3" id="income" />
           </div>
 
           <h3 class="text-center my-4">Expensess</h3>
 
           <div class="text-center my-4">
             <label class="fw-bold" for="number">Food:</label>
-            <input class="bg-secondary bg-opacity-25 border-0 p-2 ms-4" type="email" name="" id="" />
+            <input class="bg-secondary bg-opacity-25 border-0 p-2 ms-4" id="food" />
           </div>
           <div class="text-center my-4">
             <label class="fw-bold" for="number">Rent:</label>
-            <input class="bg-secondary bg-opacity-25 border-0 p-2 ms-4" type="email" name="" id="" />
+            <input class="bg-secondary bg-opacity-25 border-0 p-2 ms-4" id="rent" />
           </div>
           <div class="text-center my-3">
             <label class="fw-bold" for="number">Clothes:</label>
-            <input class="bg-secondary bg-opacity-25 border-0 er-0 p-2 ms-1" type="email" name="" id="" />
+            <input class="bg-secondary bg-opacity-25 border-0 er-0 p-2 ms-1" id="clothes" />
           </div>
 
           <div class="text-center">
-            <button class="btn btn-primary my-3 px-4 py-2 shadow-sm">calculate</button>
+            <button id="calculate-btn" class="btn btn-primary my-3 px-4 py-2 shadow-sm">calculate</button>
           </div>
 
-          <h4 class="text-center my-2">Total Expensess: <span>5500</span></h4>
-          <h4 class="text-center my-2">Balance: <span>4500</span></h4>
+          <h4 class="text-center my-2">Total Expense: <span id="total-expense">5500</span></h4>
+          <h4 class="text-center my-2">Balance: <span id="balance">4500</span></h4>
 
           <!-- saving part -->
           <div class="text-center my-3">
             <label class="fw-bold" for="number">save:</label>
-            <input class="bg-secondary bg-opacity-25 border-0 er-0 p-2 mx-2" type="email" name="" id="" />
-            <span>%</span> <button class="btn btn-primary px-4 py-2 mx-1 shadow-sm">Save</button>
+            <input
+              class="bg-secondary bg-opacity-25 border-0 er-0 p-2 mx-2"
+              type="email"
+              name=""
+              id="save-input"
+            />
+            <span>%</span>
+            <button id="save-btn" class="btn btn-primary px-4 py-2 mx-1 shadow-sm">Save</button>
           </div>
 
-          <h4 class="text-center my-2">Saving Amount: <span>2000</span></h4>
-          <h4 class="text-center my-2">Remaining Balance: <span>2500</span></h4>
+          <h4 class="text-center my-2">Saving Amount: <span id="saving-amount">2000</span></h4>
+          <h4 class="text-center my-2">Remaining Balance: <span id="rmn-balance">2500</span></h4>
           <!-- saving part -->
         </section>
         <!-- income part -->
