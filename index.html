@@ -13,22 +13,20 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <!-- font awesome -->
-    <script src="https://kit.fontawesome.com/712f91a76c.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <!-- header part -->
     <header>
-      <h1 class="text-center display-4 fw-bold text-info my-5">Money Saver</h1>
+      <h1 class="text-center display-4 fw-bold text-info my-4">My Monthly Bank</h1>
     </header>
     <!-- header part -->
 
     <!-- main part -->
-    <main class="">
-      <div class="row">
+    <main class="container">
+      <div class="row g-4">
         <!-- image part -->
         <section class="col-md-7">
-          <img class="img-fluid" src="images/giorgio-trovato-WyxqQpyFNk8-unsplash.jpg" alt="" />
+          <img class="img-fluid" src="images/money.jpg" alt="image of money" />
         </section>
         <!-- image part -->
 
@@ -41,7 +39,7 @@
             <input class="bg-secondary bg-opacity-25 border-0 p-2 ms-3" id="income" />
           </div>
 
-          <h3 class="text-center my-4">Expensess</h3>
+          <h3 class="text-center my-4">Expenses</h3>
 
           <div class="text-center my-4">
             <label class="fw-bold" for="number">Food:</label>
@@ -63,9 +61,9 @@
             <p id="error1" class="text-danger mb-3 d-none">You have to put valid numbers!</p>
           </div>
 
-          <h4 class="text-center my-2">Total Expense: <span id="total-expense">0</span></h4>
+          <h4 class="text-center my-2">Total Expenses: <span id="total-expense">0</span></h4>
           <p id="error2" class="text-danger text-center mb-1 d-none">
-            Your total expense is higher than income!
+            Your total expenses is higher than income!
           </p>
           <h4 class="text-center my-2">Balance: <span id="balance">0</span></h4>
 
@@ -74,9 +72,9 @@
             <label class="fw-bold" for="number">save:</label>
             <input class="bg-secondary bg-opacity-25 border-0 er-0 p-2 mx-2" name="" id="save-input" />
             <span>%</span>
-            <button id="save-btn" class="btn btn-primary px-4 py-2 mx-1 shadow-sm">Save</button>
+            <button id="save-btn" class="btn btn-primary px-4 py-2 mx-1 my-2 shadow-sm">Save</button>
           </div>
-          <p id="error3" class="text-danger mb-1 d-none text-center">Error savings</p>
+          <p id="error3" class="text-danger mb-1 d-none text-center">Enter a valid number</p>
           <p id="error4" class="text-danger mb-1 d-none text-center">Your saving percentage is too high!</p>
 
           <h4 class="text-center">Saving Amount: <span id="saving-amount">0</span></h4>
@@ -95,6 +93,6 @@
       crossorigin="anonymous"
     ></script>
     <!-- JS file here -->
-    <script src="app.js"></script>
+    <script src="./js/app.js"></script>
   </body>
 </html>
