@@ -7,12 +7,12 @@ const rentText = document.getElementById("rent");
 
 const clothesText = document.getElementById("clothes");
 
+const saveInputText = document.getElementById("save-input");
+
 function getInputval(inputId) {
   if (isNaN(inputId.value) || parseInt(inputId.value) < 0) {
     document.getElementById("error1").classList.remove("d-none");
-    return;
-  } else if (inputId.value == "") {
-    document.getElementById("error2").classList.remove("d-none");
+    inputId.value = "";
     return;
   } else {
     const numberValue = parseFloat(inputId.value);
@@ -35,8 +35,8 @@ const remainingBalanceText = document.getElementById("rmn-balance");
 const remainingBalance = remainingBalanceText.innerText;
 
 document.getElementById("calculate-btn").addEventListener("click", function () {
-  const remainingMoney = getInputval(mainIncomeText) - mainCalculation();
-  mainBalanceText.innerText = remainingMoney;
+  mainCalculation();
+  remainingBal();
 });
 
 function mainCalculation() {
@@ -46,19 +46,16 @@ function mainCalculation() {
   return totalSpendMoney;
 }
 
+function remainingBal() {
+  const remainingMoney = getInputval(mainIncomeText) - mainCalculation();
+  mainBalanceText.innerText = remainingMoney;
+
+  return remainingMoney;
+}
+
 document.getElementById("save-btn").addEventListener("click", function () {
-  const saveInputText = document.getElementById("save-input");
-  const saveInput = saveInputText.value;
+  const savings = (getInputval(mainIncomeText) * getInputval(saveInputText)) / 100;
+  savingAmountText.innerText = savings;
 
-  const mainBalanceText = document.getElementById("balance");
-
-  if (isNaN(saveInput) || saveInput < 0) {
-    document.getElementById("error3").classList.remove("d-none");
-    return;
-  } else {
-    const savings = (mainIncomeText.value * saveInputText.value) / 100;
-    savingAmountText.innerText = savings;
-
-    remainingBalanceText.innerText = parseFloat(mainBalanceText.innerText) - savings;
-  }
+  remainingBalanceText.innerText = remainingBal() - savings;
 });
