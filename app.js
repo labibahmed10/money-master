@@ -17,7 +17,7 @@ const mainBalanceText = document.getElementById("balance");
 const mainBalance = mainBalanceText.innerText;
 
 const saveInputText = document.getElementById("save-input");
-const saveInput = saveInputText.value;
+const saveInput = parseFloat(saveInputText.value);
 
 const savingAmountText = document.getElementById("saving-amount");
 const savingAmount = savingAmountText.innerText;
@@ -26,12 +26,30 @@ const remainingBalanceText = document.getElementById("rmn-balance");
 const remainingBalance = remainingBalanceText.innerText;
 
 document.getElementById("calculate-btn").addEventListener("click", function () {
+  main();
+  rmnBal();
+});
+
+function main() {
   const totalSpendMoney =
     parseFloat(foodText.value) + parseFloat(rentText.value) + parseFloat(clothesText.value);
 
   totalExpenseText.innerText = totalSpendMoney;
-  const remainingMoney = parseFloat(mainIncomeText.value) - totalSpendMoney;
-  mainBalanceText.innerText = remainingMoney;
-});
 
-document.getElementById("save-input").addEventListener("click", function () {});
+  return totalSpendMoney;
+}
+
+function rmnBal() {
+  const remainingMoney = parseFloat(mainIncomeText.value) - main();
+  mainBalanceText.innerText = remainingMoney;
+
+  return remainingMoney;
+}
+
+document.getElementById("save-btn").addEventListener("click", function () {
+  const savings = (parseFloat(mainIncomeText.value) * parseFloat(saveInputText.value)) / 100;
+
+  savingAmountText.innerText = savings;
+
+  remainingBalanceText.innerText = rmnBal()-savings;
+});
