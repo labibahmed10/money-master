@@ -57,7 +57,11 @@
           </div>
 
           <div class="text-center">
-            <button id="calculate-btn" class="btn btn-primary my-3 px-4 py-2 shadow-sm">calculate</button>
+            <button id="calculate-btn" class="btn btn-primary mt-3 mb-1 px-4 py-2 shadow-sm">
+              calculate
+            </button>
+            <p id="error1" class="text-danger mb-3 d-none">You have to put valid numbers!</p>
+            <p id="error2" class="text-danger mb-3 d-none">You have to fill every field!</p>
           </div>
 
           <h4 class="text-center my-2">Total Expense: <span id="total-expense">5500</span></h4>
@@ -75,8 +79,9 @@
             <span>%</span>
             <button id="save-btn" class="btn btn-primary px-4 py-2 mx-1 shadow-sm">Save</button>
           </div>
+          <p id="error3" class="text-danger mb-1 d-none text-center">Error savings</p>
 
-          <h4 class="text-center my-2">Saving Amount: <span id="saving-amount">2000</span></h4>
+          <h4 class="text-center">Saving Amount: <span id="saving-amount">2000</span></h4>
           <h4 class="text-center my-2">Remaining Balance: <span id="rmn-balance">2500</span></h4>
           <!-- saving part -->
         </section>

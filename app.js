@@ -1,23 +1,32 @@
+//geting the values of input with function
 const mainIncomeText = document.getElementById("income");
-const mainIncome = parseFloat(mainIncomeText.value);
 
 const foodText = document.getElementById("food");
-const food = parseFloat(foodText.value);
 
 const rentText = document.getElementById("rent");
-const rent = parseFloat(rentText.value);
 
 const clothesText = document.getElementById("clothes");
-const clothes = parseFloat(clothesText.value);
 
+function getInputval(inputId) {
+  if (isNaN(inputId.value) || parseInt(inputId.value) < 0) {
+    document.getElementById("error1").classList.remove("d-none");
+    return;
+  } else if (inputId.value == "") {
+    document.getElementById("error2").classList.remove("d-none");
+    return;
+  } else {
+    const numberValue = parseFloat(inputId.value);
+    inputId.value = "";
+    return numberValue;
+  }
+}
+
+//getting the values of innertext
 const totalExpenseText = document.getElementById("total-expense");
 const totalExpense = totalExpenseText.innerText;
 
 const mainBalanceText = document.getElementById("balance");
 const mainBalance = mainBalanceText.innerText;
-
-const saveInputText = document.getElementById("save-input");
-const saveInput = parseFloat(saveInputText.value);
 
 const savingAmountText = document.getElementById("saving-amount");
 const savingAmount = savingAmountText.innerText;
@@ -26,30 +35,30 @@ const remainingBalanceText = document.getElementById("rmn-balance");
 const remainingBalance = remainingBalanceText.innerText;
 
 document.getElementById("calculate-btn").addEventListener("click", function () {
-  main();
-  rmnBal();
+  const remainingMoney = getInputval(mainIncomeText) - mainCalculation();
+  mainBalanceText.innerText = remainingMoney;
 });
 
-function main() {
-  const totalSpendMoney =
-    parseFloat(foodText.value) + parseFloat(rentText.value) + parseFloat(clothesText.value);
-
+function mainCalculation() {
+  const totalSpendMoney = getInputval(foodText) + getInputval(rentText) + getInputval(clothesText);
   totalExpenseText.innerText = totalSpendMoney;
 
   return totalSpendMoney;
 }
 
-function rmnBal() {
-  const remainingMoney = parseFloat(mainIncomeText.value) - main();
-  mainBalanceText.innerText = remainingMoney;
-
-  return remainingMoney;
-}
-
 document.getElementById("save-btn").addEventListener("click", function () {
-  const savings = (parseFloat(mainIncomeText.value) * parseFloat(saveInputText.value)) / 100;
+  const saveInputText = document.getElementById("save-input");
+  const saveInput = saveInputText.value;
 
-  savingAmountText.innerText = savings;
+  const mainBalanceText = document.getElementById("balance");
 
-  remainingBalanceText.innerText = rmnBal()-savings;
+  if (isNaN(saveInput) || saveInput < 0) {
+    document.getElementById("error3").classList.remove("d-none");
+    return;
+  } else {
+    const savings = (mainIncomeText.value * saveInputText.value) / 100;
+    savingAmountText.innerText = savings;
+
+    remainingBalanceText.innerText = parseFloat(mainBalanceText.innerText) - savings;
+  }
 });
