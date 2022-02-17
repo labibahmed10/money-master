@@ -16,7 +16,7 @@ function getInputval(inputId) {
     return;
   } else {
     const numberValue = parseFloat(inputId.value);
-    inputId.value = "";
+
     return numberValue;
   }
 }
@@ -53,9 +53,16 @@ function remainingBal() {
   return remainingMoney;
 }
 
+// Saving part at last
 document.getElementById("save-btn").addEventListener("click", function () {
-  const savings = (getInputval(mainIncomeText) * getInputval(saveInputText)) / 100;
-  savingAmountText.innerText = savings;
+  if (isNaN(getInputval(saveInputText)) || getInputval(saveInputText) < 0) {
+    document.getElementById("error1").classList.add("d-none");
+    document.getElementById("error2").classList.remove("d-none");
+    return;
+  } else {
+    const savings = (getInputval(mainIncomeText) * getInputval(saveInputText)) / 100;
+    savingAmountText.innerText = savings;
 
-  remainingBalanceText.innerText = remainingBal() - savings;
+    remainingBalanceText.innerText = remainingBal() - savings;
+  }
 });
