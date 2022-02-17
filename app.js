@@ -16,25 +16,24 @@ function getInputval(inputId) {
     return;
   } else {
     const numberValue = parseFloat(inputId.value);
-
     return numberValue;
   }
 }
 
 //getting the values of innertext
 const totalExpenseText = document.getElementById("total-expense");
-const totalExpense = totalExpenseText.innerText;
 
 const mainBalanceText = document.getElementById("balance");
-const mainBalance = mainBalanceText.innerText;
 
 const savingAmountText = document.getElementById("saving-amount");
-const savingAmount = savingAmountText.innerText;
 
 const remainingBalanceText = document.getElementById("rmn-balance");
-const remainingBalance = remainingBalanceText.innerText;
 
 document.getElementById("calculate-btn").addEventListener("click", function () {
+  if (mainCalculation() > getInputval(mainIncomeText)) {
+    document.getElementById("error2").classList.remove("d-none");
+    return;
+  }
   mainCalculation();
   remainingBal();
 });
@@ -57,7 +56,13 @@ function remainingBal() {
 document.getElementById("save-btn").addEventListener("click", function () {
   if (isNaN(getInputval(saveInputText)) || getInputval(saveInputText) < 0) {
     document.getElementById("error1").classList.add("d-none");
-    document.getElementById("error2").classList.remove("d-none");
+    document.getElementById("error3").classList.remove("d-none");
+    saveInputText.value = "";
+    return;
+  }
+  if ((getInputval(mainIncomeText) * getInputval(saveInputText)) / 100 > remainingBal()) {
+    document.getElementById("error4").classList.remove("d-none");
+    saveInputText.value = "";
     return;
   } else {
     const savings = (getInputval(mainIncomeText) * getInputval(saveInputText)) / 100;
